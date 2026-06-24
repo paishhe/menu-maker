@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        body {
+    font-family: "Departure Mono Nerd Font", monospace;
+
+    background: linear-gradient(
+        135deg,
+        #ffd6e0,
+        #ffe8d6
+    );
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+
+    margin: 0;
+
+    padding: 40px;
+}
+
+.title-card {
+
+        background: white;
+
+        padding: 25px;
+
+        border-radius: 20px;
+
+        text-align: center;
+
+        box-shadow:
+            0 10px 25px rgba(0,0,0,0.15);
+
+        margin-bottom: 40px;
+    }
+
+    .header-card {
+        background: white;
+        text-align: center;
+        box-shadow:
+            0 10px 25px rgba(0,0,0,0.15);
+
+            border-radius: 25px;
+
+    }
+    .cards-container {
+        display: flex;
+
+        gap: 40px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .card {
+        background: white;
+
+        width: 300px;
+
+        padding: 30px;
+
+        border-radius: 25px;
+
+        text-align: center;
+
+        box-shadow:
+            0 10px 25px rgba(0,0,0,0.15);
+        }
+
+    button {
+        background: #ff6b6b;
+
+        margin-top: 25px;
+
+        color: white;
+
+        border: none;
+
+        padding: 15px 25px;
+
+        border-radius: 15px;
+
+        cursor: pointer;
+
+        transition: 0.2s;
+    }   
+
+    button:hover {
+        transform: scale(1.05);
+    }
+    
+#breakfast-page,   
+#lunch-page {
+    display: none;
+}
+</style>
+
+</head>
+<body>
+    
+    <div class="title-card" id = "home-page">
+        <h1>Menu Maker</h1>
+        <p>Pick today's menu!</p>
+
+        <button onclick="showBreakfast()">
+                Breakfast
+            </button>
+
+        <button onclick="showLunch()">
+                Lunch/Dinner
+        </button>
+
+    </div>
+
+    <div id="lunch-page">
+
+    <div class = "header-card"><h1>Lunch/Dinner Menu</h1></div>
+    
+
+    <button onclick="goHome()">
+        ← Home
+    </button>
+
+    <div class="cards-container">
+
+        <div class="card">
+
+            <h2>Dry Sabzi</h2>
+
+            <div id="dry-result">
+                Press the button!
+            </div>
+
+            <button onclick="pickdry()">
+                Pick Dry Item
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Pick Wet Sabzi</h2>
+
+            <div id="wet-result">
+                Press the button!
+            </div>
+
+            <button onclick="pickwet()">
+                Pick Wet Item
+            </button>
+
+        </div>
+
+    </div>
+    </div>
+
+    <div id ="breakfast-page">
+        <div class = "header-card"><h1>Breakfast Menu</h1></div>
+    
+
+    <button onclick="goHome()">
+        ← Home
+    </button>
+
+    <div class="card">
+
+            <h2>Breakfast Item</h2>
+
+            <div>
+                Press the button!
+            </div>
+
+            <button >
+                Pick Breakfast
+            </button>
+
+        </div>
+
+    </div>
+</div>
+    
+
+
+
+<script>
+   const wet_items = [
+    "Moong dal",
+    "Channa dal",
+    "Tuvar dal",
+    "Masoor dal",
+    "Moong",
+    "Val",
+    "Rajma",
+    "Chole",
+    "Moth",
+    "Masoor",
+    "Kachori ki sabji",
+    "Aloo singi ki sabji",
+    "Dahi curry",
+    "Mushroom matar",
+    "Aloo vadi",
+    "Kala channa",
+    "Suran"
+
+];
+
+    const dry_items = [
+    "Soya tikki",
+    "Rajma tikki",
+    "Kala channa tikki",
+    "Gobi matar",
+    "Gobi aloo",
+    "Gavar",
+    "Baingan stuffed",
+    "Baingan fry",
+    "Baingan bharta",
+    "Stuffed mushrooms",
+    "Palak paneer",
+    "Chinese paneer",
+    "Paneer (other)",
+    "Arbi airfryer",
+    "Arbi gravy",
+    "Beans aloo",
+    "Bhee ki sabji",
+    "Karela fry",
+    "Karela stuffed",
+    "Karela sabji",
+    "Gajar matar",
+    "Aloo tuk",
+    "french fries",
+    "Stuffed karela",
+    "Methi",
+    "Suran"
+];
+
+    function pickdry() {
+        const item = dry_items[
+            Math.floor(Math.random() * dry_items.length)
+        ];
+
+        document.getElementById("dry-result").textContent = item;
+    }
+
+    function pickwet() {
+        const item = wet_items[
+            Math.floor(Math.random() * wet_items.length)
+        ];
+
+        document.getElementById("wet-result").textContent = item;
+    }
+</script>
+    </div>
+
+    <script>
+
+function showBreakfast() {
+
+    document.getElementById("home-page")
+        .style.display = "none";
+
+    document.getElementById("breakfast-page")
+        .style.display = "block";
+}
+
+function showLunch() {
+
+    document.getElementById("home-page")
+        .style.display = "none";
+
+    document.getElementById("lunch-page")
+        .style.display = "block";
+}
+
+function goHome() {
+
+    document.getElementById("breakfast-page")
+        .style.display = "none";
+
+    document.getElementById("lunch-page")
+        .style.display = "none";
+
+    document.getElementById("home-page")
+        .style.display = "block";
+}
+
+</script>
+</body>
+
+
+
+
+
+</html>
