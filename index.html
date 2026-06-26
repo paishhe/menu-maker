@@ -279,20 +279,25 @@ const bf = [
   "Purple Yam"
 ];
 
-    function pickdry() {
-        const item = dry_items[
+    function pickdry(exclude) {
+        let item;
+        do{ item = dry_items[
             Math.floor(Math.random() * dry_items.length)
-        ];
+        ]; }
+        while(item == exclude)
 
         document.getElementById("dry-result").textContent = item;
 
         return item
     }
 
-    function pickwet() {
-        const item = wet_items[
+    function pickwet(exclude) {
+        let item;
+
+        do{  item = wet_items[
             Math.floor(Math.random() * wet_items.length)
-        ];
+        ]; }
+        while(item == exclude)
 
         document.getElementById("wet-result").textContent = item;
 
@@ -314,8 +319,10 @@ const bf = [
         const bf_item = pickbf();
         const lunch_dry = pickdry(); // WHEN THESE ARE CALLED, THEY ALSO WRITE TO EG. DRY-RESULT. BUT THAT PAGE IS HIDDEN SO IT IS OKAY
         const lunch_wet = pickwet();
-        const dinner_dry = pickdry();
-        const dinner_wet = pickwet();
+        const dinner_dry = pickdry(lunch_dry);
+        
+        const dinner_wet = pickwet(lunch_wet);
+        
 
 
         document.getElementById("daily-menu-result").innerHTML = `
